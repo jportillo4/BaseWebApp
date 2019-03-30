@@ -78,6 +78,9 @@ function addMessage(body, title) {
   var newPostKey = firebase.database().ref().child('stream').push().key;
   firebase.database().ref('/stream/' + newPostKey).set(postData);
 }
+// did not work
+//$('#message-form').trigger("reset");
+// has to be called
 
 
 // This gets called whenver the form is submitted (check out the index.ejs).
@@ -87,4 +90,7 @@ function handleMessageFormSubmit() {
   var title = $('#new-post-title').val();
 
   addMessage(body, title);
+
+  $('#message-form').trigger("reset");
+
 }
